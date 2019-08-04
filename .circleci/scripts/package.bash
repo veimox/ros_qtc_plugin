@@ -10,7 +10,7 @@ export BASE_PACKAGE_NAME="org.rosindustrial.qtros"
 export DISTRO=(`lsb_release -cs`)
 
 RQTC_INSTALL_DIR="rqtc_install"
-RQTC_INSTALL_PATH="$BASE_PATH/$RQTC_INSTALL_DIR"
+RQTC_INSTALL_PATH="$BASE_PATH/$RQTC_INSTALL_DIR/$INSTALL_DIR"
 
 export INSTALL_DIR="latest"
 export PACKAGE_NAME="latest"
@@ -109,8 +109,8 @@ pretty_print "copy YamlCPP plugin"
 cp $QTC_INSTALL_PATH/lib/qtcreator/libyaml-cpp.so* $RQTC_INSTALL_PATH/lib/qtcreator
 
 pretty_print "package plugin"
-cd $BASE_PATH
-7zr a -r $BASE_PATH/qtcreator_ros_plugin.7z $RQTC_INSTALL_PATH
+cd $BASE_PATH/$RQTC_INSTALL_DIR/
+7zr a -r $BASE_PATH/qtcreator_ros_plugin.7z $INSTALL_DIR
 
 
 ###############
