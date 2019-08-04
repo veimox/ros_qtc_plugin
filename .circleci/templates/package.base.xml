@@ -1,13 +1,15 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <Package>
-    <DisplayName>$QTC_DISPLAY_NAME</DisplayName>
-    <Description>Installs the Qt Creator IDE</Description>
-    <Version>$QTC_VERSION</Version>
-    <ReleaseDate>$QTC_RELEASE_DATE</ReleaseDate>
-    <Name>$BASE_PACKAGE_NAME.$PACKAGE_NAME</Name>
-    <Dependencies>$BASE_PACKAGE_NAME</Dependencies>
-    <SortingPriority>$SortingPriority</SortingPriority>
-    <Script>installscript.qs</Script>
-    <Checkable>true</Checkable>
+    <DisplayName>Qt Creator for ROS</DisplayName>
+    <Description>Install Qt Creator for ROS Development</Description>
+    <Version>$INSTALLER_VERSION</Version>
+    <ReleaseDate>$INSTALLER_RELEASE_DATE</ReleaseDate>
+    <Licenses>
+        <License name="GNU GPL version 3 (with exception clauses)" file="LICENSE.GPL3-EXCEPT" />
+        <License name="Apache License, Version 2.0" file="LICENSE.APACHE" />
+    </Licenses>
+    <UserInterfaces>
+        <UserInterface>page.ui</UserInterface>
+    </UserInterfaces>
+    <Checkable>false</Checkable>
 </Package>

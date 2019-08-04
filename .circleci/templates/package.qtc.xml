@@ -1,11 +1,12 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <Package>
-    <DisplayName>ROS Plug-in ($RQTC_MINOR_VERSION)</DisplayName>
-    <Description>Installs the ROS Qt Creator Plug-in</Description>
-    <Version>$RQTC_VERSION</Version>
-    <ReleaseDate>$RQTC_RELEASE_DATE</ReleaseDate>
-    <Name>$BASE_PACKAGE_NAME.$PACKAGE_NAME.rqtc</Name>
-    <Dependencies>$BASE_PACKAGE_NAME.$PACKAGE_NAME</Dependencies>
-    <Checkable>false</Checkable>
+    <DisplayName>$QTC_DISPLAY_NAME</DisplayName>
+    <Description>Installs the Qt Creator IDE</Description>
+    <Version>$QTC_VERSION</Version>
+    <ReleaseDate>$QTC_RELEASE_DATE</ReleaseDate>
+    <Name>$BASE_PACKAGE_NAME.$PACKAGE_NAME</Name>
+    <Dependencies>$BASE_PACKAGE_NAME</Dependencies>
+    <SortingPriority>200</SortingPriority>
+    <Script>installscript.qs</Script>
+    <Checkable>true</Checkable>
 </Package>
