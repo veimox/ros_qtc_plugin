@@ -16,4 +16,4 @@ make install
 
 # Next change the rpath to use the local Qt Libraries copied into the Qt Creator Directory
 pretty_print "Update Rpath"
-chrpath -r \$\ORIGIN:\$\ORIGIN/..:\$\ORIGIN/../lib/qtcreator:\$\ORIGIN/../../Qt/lib $BASE_PATH/$INSTALL_DIR/lib/qtcreator/plugins/libROSProjectManager.so  
+chrpath -r \$\ORIGIN:\$\ORIGIN/..:\$\ORIGIN/../lib/qtcreator:\$\ORIGIN/../../Qt/lib $QTC_INSTALL_PATH/lib/qtcreator/plugins/libROSProjectManager.so
