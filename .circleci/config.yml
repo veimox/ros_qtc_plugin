@@ -10,9 +10,9 @@ jobs:
     docker:
       - image: veimox/qtc:xenial-4.9.2
     steps:
-      - checkout:
-          path: "$BASE_PATH"
-      - run: ls "$BASE_PATH"   
+      - checkout
+      - run: "cp -r . $BASE_PATH/ros_qtc_plugin"
+      - run: "ls $BASE_PATH"
       - run: .circleci/scripts/build.bash
       - run: .circleci/scripts/package.bash
 workflows:
