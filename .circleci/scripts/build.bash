@@ -11,7 +11,7 @@ cd $BASE_PATH/ros_qtc_plugin-build
 pretty_print "Running qmake"
 qmake ../ros_qtc_plugin/ros_qtc_plugin.pro -r 
 pretty_print "Making"
-make -j8$(nproc) || exit 1
+make -j$(nproc) || exit 1
 
 # Next change the rpath to use the local Qt Libraries copied into the Qt Creator Directory
 pretty_print "Update Rpath"
