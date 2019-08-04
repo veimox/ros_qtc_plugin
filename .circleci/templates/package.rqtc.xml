@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>ROS Plug-in ($RQTC_MINOR_VERSION)</DisplayName>
+    <Description>Installs the ROS Qt Creator Plug-in</Description>
+    <Version>$RQTC_VERSION</Version>
+    <ReleaseDate>$RQTC_RELEASE_DATE</ReleaseDate>
+    <Name>$BASE_PACKAGE_NAME.$PACKAGE_NAME.rqtc</Name>
+    <Dependencies>$BASE_PACKAGE_NAME.$PACKAGE_NAME</Dependencies>
+    <Checkable>false</Checkable>
+</Package>

@@ -1,0 +1,13 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>$QTC_DISPLAY_NAME</DisplayName>
+    <Description>Installs the Qt Creator IDE</Description>
+    <Version>$QTC_VERSION</Version>
+    <ReleaseDate>$QTC_RELEASE_DATE</ReleaseDate>
+    <Name>$BASE_PACKAGE_NAME.$PACKAGE_NAME</Name>
+    <Dependencies>$BASE_PACKAGE_NAME</Dependencies>
+    <SortingPriority>$SortingPriority</SortingPriority>
+    <Script>installscript.qs</Script>
+    <Checkable>true</Checkable>
+</Package>

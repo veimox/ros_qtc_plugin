@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>Qt Creator with ROS Plug-in</Name>
+    <Version>$INSTALLER_VERSION</Version>
+    <Title>Qt Creator with ROS Plug-in</Title>
+    <Publisher>Qt Project and ROS-Industrial</Publisher>
+    <InstallerWindowIcon>logo.png</InstallerWindowIcon>
+    <Watermark>watermark.png</Watermark>
+    <WizardDefaultHeight>520</WizardDefaultHeight>
+    <MaintenanceToolName>MaintenanceTool</MaintenanceToolName>
+    <TargetDir>@HomeDir@/QtCreator</TargetDir>
+    <RemoteRepositories>
+         <Repository>
+                 <Url>https://qtcreator-ros.datasys.swri.edu/downloads/repositories/$DISTRO/$INSTALL_DIR</Url>
+                 <Enabled>1</Enabled>
+                 <DisplayName>Qt Creator with ROS Plug-in</DisplayName>
+         </Repository>
+    </RemoteRepositories>
+</Installer>
