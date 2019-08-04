@@ -11,6 +11,7 @@ jobs:
       - run: .circleci/scripts/package.bash
       - store_artifacts:
           path: /tmp/abcdefghijklmnopqrstuvwxyz/installer/qtcreator-ros-xenial-latest-offline-installer.run
+      - store_artifacts:
           path: /tmp/abcdefghijklmnopqrstuvwxyz/installer/qtcreator-ros-xenial-latest-online-installer.run
 workflows:
   version: 2
