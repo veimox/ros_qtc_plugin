@@ -6,6 +6,13 @@ jobs:
     steps:
       - checkout
       - run: .circleci/scripts/build.bash
+  deploy:
+    docker:
+      - image: veimox/qtc:xenial-4.9.2
+    steps:
+      - checkout
+      - run: .circleci/scripts/build.bash
+      - run: .circleci/scripts/package.bash
 workflows:
   version: 2
   build_and_test:
