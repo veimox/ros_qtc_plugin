@@ -115,7 +115,7 @@ bool ROSCatkinToolsStep::init()
     if (!bc)
         emit addTask(Task::buildConfigurationMissingTask());
 
-    ToolChain *tc = ToolChainKitInformation::toolChain(target()->kit(), ProjectExplorer::Constants::CXX_LANGUAGE_ID);
+    ToolChain *tc = ToolChainKitAspect::toolChain(target()->kit(), ProjectExplorer::Constants::CXX_LANGUAGE_ID);
 
     if (!tc)
         emit addTask(Task::compilerMissingTask());
@@ -134,13 +134,13 @@ bool ROSCatkinToolsStep::init()
 
     ProcessParameters *pp = processParameters();
     pp->setMacroExpander(bc->macroExpander());
-    pp->setWorkingDirectory(m_catkinToolsWorkingDir);
+    pp->setWorkingDirectory(Utils::FilePath::fromString(m_catkinToolsWorkingDir));
 
     // Force output to english for the parsers. Do this here and not in the toolchain's
     // addToEnvironment() to not screw up the users run environment.
     env.set(QLatin1String("LC_ALL"), QLatin1String("C"));
     pp->setEnvironment(env);
-    pp->setCommand(makeCommand());
+    pp->setCommand(Utils::FilePath::fromString(makeCommand()));
     pp->setArguments(allArguments(bc->cmakeBuildType()));
     pp->resolveAll();
 
@@ -376,15 +376,14 @@ void ROSCatkinToolsStepWidget::updateDetails()
 
     ROSBuildConfiguration *bc = m_makeStep->rosBuildConfiguration();
     ROSUtils::WorkspaceInfo workspaceInfo = ROSUtils::getWorkspaceInfo(bc->project()->projectDirectory(), bc->buildSystem(), bc->project()->distribution());
-    Utils::Environment env(ROSUtils::getWorkspaceEnvironment(workspaceInfo, bc->environment()).toStringList());
 
-    m_ui->catkinToolsWorkingDirWidget->setEnvironment(env);
+    m_ui->catkinToolsWorkingDirWidget->setEnvironment(bc->environment());
 
     ProcessParameters param;
     param.setMacroExpander(bc->macroExpander());
-    param.setEnvironment(env);
-    param.setWorkingDirectory(m_makeStep->m_catkinToolsWorkingDir);
-    param.setCommand(m_makeStep->makeCommand());
+    param.setEnvironment(bc->environment());
+    param.setWorkingDirectory(Utils::FilePath::fromString(m_makeStep->m_catkinToolsWorkingDir));
+    param.setCommand(Utils::FilePath::fromString(m_makeStep->makeCommand()));
     param.setArguments(m_makeStep->allArguments(bc->cmakeBuildType(), false));
     m_summaryText = param.summary(displayName());
     emit updateSummary();
@@ -475,7 +474,7 @@ void ROSCatkinToolsStepWidget::renameProfile(const QString profileName)
 
 void ROSCatkinToolsStepWidget::editProfile(const QString profileName)
 {
-    Utils::FileName profile = ROSUtils::getCatkinToolsProfile(m_makeStep->rosBuildConfiguration()->project()->projectDirectory(), profileName);
+    Utils::FilePath profile = ROSUtils::getCatkinToolsProfile(m_makeStep->rosBuildConfiguration()->project()->projectDirectory(), profileName);
 
     ROSCatkinToolsProfileEditorDialog *editor = new ROSCatkinToolsProfileEditorDialog(profile);
     editor->show();
@@ -707,7 +706,7 @@ ROSCatkinToolsConfigEditorWidget::~ROSCatkinToolsConfigEditorWidget()
     delete m_editor;
 }
 
-bool ROSCatkinToolsConfigEditorWidget::parseProfileConfig(Utils::FileName filePath)
+bool ROSCatkinToolsConfigEditorWidget::parseProfileConfig(Utils::FilePath filePath)
 {
     m_profileConfigPath = filePath;
     if (!m_profileConfigPath.exists())
@@ -883,7 +882,7 @@ bool ROSCatkinToolsConfigEditorWidget::isValid() const
 // ROSCatkinToolsProfileEditorDialog
 //
 
-ROSCatkinToolsProfileEditorDialog::ROSCatkinToolsProfileEditorDialog(Utils::FileName filePath) : QDialog()
+ROSCatkinToolsProfileEditorDialog::ROSCatkinToolsProfileEditorDialog(Utils::FilePath filePath) : QDialog()
 {
     setWindowFlags(Qt::WindowStaysOnTopHint | Qt::Dialog);
     QVBoxLayout *vlayout = new QVBoxLayout();

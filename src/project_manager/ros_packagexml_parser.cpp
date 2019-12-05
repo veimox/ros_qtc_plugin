@@ -27,12 +27,11 @@
 namespace ROSProjectManager {
 namespace Internal {
 
-bool ROSPackageXmlParser::parsePackageXml(const Utils::FileName &filepath)
+bool ROSPackageXmlParser::parsePackageXml(const Utils::FilePath &filepath)
 {
     m_packageInfo.path = filepath.parentDir();
     m_packageInfo.filepath = filepath;
-    m_packageInfo.buildFile = m_packageInfo.path;
-    m_packageInfo.buildFile.appendPath("CMakeLists.txt");
+    m_packageInfo.buildFile = m_packageInfo.path.pathAppended("CMakeLists.txt");
 
     QFile pkgFile(filepath.toString());
     if (pkgFile.exists() && pkgFile.open(QFile::ReadOnly)) {
@@ -54,7 +53,7 @@ bool ROSPackageXmlParser::parsePackageXml(const Utils::FileName &filepath)
     return false;
 }
 
-bool ROSPackageXmlParser::parsePackageXml(const Utils::FileName &filepath, ROSUtils::PackageInfo &packageInfo)
+bool ROSPackageXmlParser::parsePackageXml(const Utils::FilePath &filepath, ROSUtils::PackageInfo &packageInfo)
 {
     bool result = parsePackageXml(filepath);
     packageInfo = m_packageInfo;

@@ -30,10 +30,6 @@
 
 #include <QProcess>
 
-namespace Utils {
-class FileName;
-} // namespace Utils
-
 namespace ROSProjectManager {
 namespace Internal {
 
