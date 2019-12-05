@@ -2,7 +2,7 @@ version: 2
 jobs:
   build_and_pack:
     docker:
-      - image: veimox/qtc:xenial-4.9.2
+      - image: veimox/qtc:xenial-4.10.0
     steps:
       - checkout
       - run: cp -r . $BASE_PATH/ros_qtc_plugin
